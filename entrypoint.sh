@@ -25,12 +25,12 @@ export HOME=/mnt/seeder
 chown -R user:user /mnt/seeder
 
 if grep -q avx /proc/cpuinfo; then
-    ln -snf /usr/local/bin/dnsseed-avx /usr/local/bin/zen-dnsseed
+    ln -snf /usr/local/bin/dnsseed-avx /usr/local/bin/safecoin-dnsseed
 else
-    ln -snf /usr/local/bin/dnsseed /usr/local/bin/zen-dnsseed
+    ln -snf /usr/local/bin/dnsseed /usr/local/bin/safecoin-dnsseed
 fi
 
-if [[ "$1" == zen-dnsseed ]]; then
+if [[ "$1" == safecoin-dnsseed ]]; then
     set -- gosu user tini -- bash -c "$@ $OPTS"
 else
     set -- gosu user "$@"

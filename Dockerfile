@@ -1,17 +1,17 @@
-FROM zencash/gosu-base:1.11
+FROM safecoin/gosu-base:1.11
 
-MAINTAINER cronicc@protonmail.com
+MAINTAINER aleksandr.chornuy@gmail.com
 
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends install apt-utils \
     && DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends install git build-essential libboost-all-dev libssl-dev ca-certificates wget \
-    && git clone -b master --single-branch https://github.com/HorizenOfficial/zen-seeder.git /root/seeder \
+    && git clone -b master --single-branch https://github.com/Fair-Exchange/safecoin-seeder.git /root/seeder \
     && cd /root/seeder \
     && make \
     && install -m 755 dnsseed /usr/local/bin/dnsseed-avx \
     && cd \
     && rm -rf /root/seeder \
-    && git clone -b portable --single-branch https://github.com/HorizenOfficial/zen-seeder.git /root/seeder \
+    && git clone -b portable --single-branch https://github.com/Fair-Exchange/safecoin-seeder.git /root/seeder \
     && cd /root/seeder \
     && make \
     && install -m 755 dnsseed /usr/local/bin \
@@ -46,4 +46,4 @@ VOLUME /mnt/seeder
 
 WORKDIR /mnt/seeder
 
-CMD ["zen-dnsseed"]
+CMD ["safecoin-dnsseed"]
