@@ -1,4 +1,4 @@
-FROM safecoin/gosu-base:1.11
+FROM zencash/gosu-base:1.11
 
 MAINTAINER aleksandr.chornuy@gmail.com
 
